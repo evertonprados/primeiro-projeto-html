@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
 
 body {
-    background-color: #f4f7f6; /* Um cinza azulado bem elegante */
+    /* Um gradiente que vai do azul escuro para um roxo suave */
+    background: linear-gradient(135deg, #007bff 0%, #2c0c5e 100%);
+    
     font-family: 'Segoe UI', sans-serif;
     display: flex;
-    justify-content: center; /* Centraliza na horizontal */
-    align-items: center;     /* Centraliza na vertical */
-    height: 100vh;           /* Faz o fundo ocupar a tela toda */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
 }
 
