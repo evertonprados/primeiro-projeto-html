@@ -30,3 +30,26 @@ p {
     color: #666;
     line-height: 1.5; /* Espaçamento maior entre as linhas do texto */
 }
+
+.links {
+    margin-top: 25px;       /* Dá um espaço entre o texto de cima e os botões */
+    display: flex;          /* Ativa o modo de alinhamento flexível */
+    flex-direction: column; /* Coloca os botões um embaixo do outro */
+    gap: 10px;              /* Cria um buraquinho de 10px entre cada botão */
+}
+
+.botao {
+    text-decoration: none;  /* Tira aquele sublinhado feio de link */
+    background-color: #007bff; /* Cor de fundo (azul) */
+    color: white;           /* Cor da letra */
+    padding: 12px 20px;     /* Espaço interno (engorda o botão) */
+    border-radius: 8px;     /* Arredonda as pontas */
+    font-weight: bold;      /* Deixa a letra negrita */
+    transition: 0.3s;       /* Faz as mudanças de cor serem suaves, não bruscas */
+}
+
+/* O 'hover' é o que acontece quando o mouse passa por cima */
+.botao:hover {
+    background-color: #0056b3; /* Escurece o azul */
+    transform: scale(1.05);    /* Aumenta o botão de leve (efeito visual) */
+}
