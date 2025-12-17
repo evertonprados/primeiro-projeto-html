@@ -1,0 +1,32 @@
+/* 1. Escolhendo uma fonte mais bonita do Google */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
+
+body {
+    background-color: #f4f7f6; /* Um cinza azulado bem elegante */
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center;     /* Centraliza na vertical */
+    height: 100vh;           /* Faz o fundo ocupar a tela toda */
+    margin: 0;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;     /* Curvas mais suaves */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra que dá profundidade */
+    text-align: center;
+    max-width: 300px;
+    border-top: 8px solid #007bff; /* Uma barra azul no topo para dar estilo */
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+p {
+    color: #666;
+    line-height: 1.5; /* Espaçamento maior entre as linhas do texto */
+}
