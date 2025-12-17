@@ -11,6 +11,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background 0.5s ease, color 0.5s ease;
+
 }
 
 .card {
@@ -27,6 +29,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background-color 0.5s ease, transform 0.3s;
+
 }
 
 h1 {
@@ -69,4 +73,29 @@ p {
     border: 4px solid #007bff; /* Uma borda azul em volta da foto */
     margin-bottom: 25px; /* Empurra o título e tudo que está abaixo para baixo */
 }
+/* Quando o body tiver a classe 'dark-mode', as cores mudam */
+body.dark-mode {
+    background: linear-gradient(135deg, #121212 0%, #2c3e50 100%);
+    color: white;
+}
+
+body.dark-mode .card {
+    background: #1e1e1e;
+    color: white;
+    border-top-color: #bb86fc; /* Muda a cor da borda no modo escuro */
+}
+
+body.dark-mode h1 { color: #bb86fc; }
+body.dark-mode p { color: #ccc; }
+
+/* Estilo do botão de alternar */
+.btn-tema {
+    margin-top: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 12px;
+    transition: 0.3s;
 }
