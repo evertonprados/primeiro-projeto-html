@@ -6,6 +6,7 @@ body {
     background: linear-gradient(135deg, #007bff 0%, #2c0c5e 100%);
     min-height: 100vh; /* 'min-height' em vez de 'height' permite que a página cresça se necessário */
     display: flex;
+    flex-direction: column; /* Organiza o card e outros itens em coluna */
     justify-content: center;
     align-items: center;
     margin: 0;
@@ -72,8 +73,8 @@ p {
 
 /* O 'hover' é o que acontece quando o mouse passa por cima */
 .botao:hover {
-    background-color: #0056b3; /* Escurece o azul */
-    transform: scale(1.05);    /* Aumenta o botão de leve (efeito visual) */
+   background-color: #218838;
+    transform: scale(1.02);
 }
 .foto-perfil {
     width: 100px;  /* Diminuir um pouco ajuda a ganhar espaço */
@@ -110,10 +111,15 @@ body.dark-mode p { color: #ccc; }
     transition: 0.3s;
 }
 #botao-frase {
-    margin-bottom: 10px;
-    background-color: #28a745; /* Um verde para diferenciar do azul */
-    display: block;      /* Garante que ele se comporte como um bloco */
-    margin-left: auto;   /* Margem automática na esquerda */
-    margin-right: auto;  /* Margem automática na direita */
-    width: fit-content;  /* O botão terá apenas o tamanho do texto interno */
+  background-color: #28a745;
+    color: white;
+    border: none;           /* Remove a borda padrão de botões HTML */
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;        /* Faz aparecer a "mãozinha" ao passar o mouse */
+    transition: 0.3s;
+    width: 100%;            /* Ocupa a largura total do container pai */
+    max-width: 250px;       /* Limita para não ficar largo demais em telas grandes */
 }
+
