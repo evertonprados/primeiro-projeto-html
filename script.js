@@ -1,34 +1,44 @@
 const botaoTema = document.getElementById('botao-tema');
 const corpo = document.body;
 
-// Lógica do Tema
+// 1. MEMÓRIA: Assim que o site carrega, ele olha na "gaveta" (localStorage)
+const temaSalvo = localStorage.getItem('tema');
+
+// Se na gaveta estiver escrito 'dark', ele já começa no modo escuro
+if (temaSalvo === 'dark') {
+    corpo.classList.add('dark-mode');
+}
+
+// Lógica do Tema com "Anotação"
 botaoTema.addEventListener('click', () => {
     corpo.classList.toggle('dark-mode');
-    console.log("Tema alternado!");
+    
+    // IF/ELSE: Decidindo o que salvar na memória
+    if (corpo.classList.contains('dark-mode')) {
+        // Se o modo escuro está ativo, anota 'dark'
+        localStorage.setItem('tema', 'dark');
+    } else {
+        // Se não, anota 'light'
+        localStorage.setItem('tema', 'light');
+    }
+    
+    console.log("Preferência de tema salva!");
 });
 
-// Elementos da Frase
+// --- Lógica da Frase (Sua API que já está ótima) ---
 const botaoFrase = document.getElementById('botao-frase');
 const displayFrase = document.getElementById('texto-frase');
 
-// NOVA FUNÇÃO: Buscando frase de uma API (Conselho do dia)
 async function buscarFrase() {
-    displayFrase.innerText = "Buscando inspiração..."; // Feedback para o usuário
-    
+    displayFrase.innerText = "Buscando inspiração...";
     try {
-        // O fetch vai até a API buscar um conselho
         const resposta = await fetch('https://api.adviceslip.com/advice');
         const dados = await resposta.json();
-        
-        // Atualiza a tela com o conselho vindo da internet
         displayFrase.innerText = `"${dados.slip.advice}"`;
         displayFrase.style.fontStyle = "italic";
-        
     } catch (erro) {
-        console.error("Erro ao buscar frase:", erro);
         displayFrase.innerText = "Conexão falhou. O sucesso exige persistência!";
     }
 }
 
-// Escutador do botão de frase
 botaoFrase.addEventListener('click', buscarFrase);
