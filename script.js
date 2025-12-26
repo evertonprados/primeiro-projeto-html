@@ -1,37 +1,34 @@
-const botao = document.getElementById('botao-tema');
+const botaoTema = document.getElementById('botao-tema');
 const corpo = document.body;
 
-botao.addEventListener('click', () => {
-    console.log("O botão foi clicado!"); // Isso aparece no Console (F12)
+// Lógica do Tema
+botaoTema.addEventListener('click', () => {
     corpo.classList.toggle('dark-mode');
+    console.log("Tema alternado!");
 });
-// 1. Nossa lista de frases (podes adicionar as que quiseres!)
-const frases = [
-    "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
-    "A melhor forma de prever o futuro é criá-lo.",
-    "Errar é apenas a oportunidade de começar de novo com mais inteligência.",
-    "Código limpo é poesia escrita para máquinas entenderem.",
-    "A consistência bate o talento 100% das vezes."
-];
 
-// 2. Pegamos os novos elementos do HTML
+// Elementos da Frase
 const botaoFrase = document.getElementById('botao-frase');
 const displayFrase = document.getElementById('texto-frase');
 
-// 3. A lógica para escolher uma frase aleatória
-botaoFrase.addEventListener('click', () => {
-    // Sorteia um número entre 0 e o tamanho da lista
-    const indiceAleatorio = Math.floor(Math.random() * frases.length);
+// NOVA FUNÇÃO: Buscando frase de uma API (Conselho do dia)
+async function buscarFrase() {
+    displayFrase.innerText = "Buscando inspiração..."; // Feedback para o usuário
     
-    // Troca o texto na tela
-    displayFrase.innerText = frases[indiceAleatorio];
-    
-    // Um efeito visual extra: muda a cor do texto para dar destaque
-    displayFrase.style.fontStyle = "italic";
-});
-botaoFrase.addEventListener('click', () => {
-    console.log("Sorteando frase..."); // Se isso aparecer no F12, o problema é no HTML/CSS
-    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-    displayFrase.innerText = frases[indiceAleatorio];
-    displayFrase.style.fontStyle = "italic";
-});
+    try {
+        // O fetch vai até a API buscar um conselho
+        const resposta = await fetch('https://api.adviceslip.com/advice');
+        const dados = await resposta.json();
+        
+        // Atualiza a tela com o conselho vindo da internet
+        displayFrase.innerText = `"${dados.slip.advice}"`;
+        displayFrase.style.fontStyle = "italic";
+        
+    } catch (erro) {
+        console.error("Erro ao buscar frase:", erro);
+        displayFrase.innerText = "Conexão falhou. O sucesso exige persistência!";
+    }
+}
+
+// Escutador do botão de frase
+botaoFrase.addEventListener('click', buscarFrase);
